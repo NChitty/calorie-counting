@@ -45,8 +45,15 @@ fn main() {
 
     elves.sort_by(|a, b| b.get_total().cmp(&a.get_total()));
 
-    let most = elves.get(0).unwrap();
+    let most = &elves[0..=2];
+    
+    let mut sum = 0;
 
-    println!("The most calories carried by a single elf is {}", most.get_total());
+    for elf in most {
+        println!("Summing {} and {}", sum, (*elf).get_total());
+        sum = sum + (*elf).get_total();
+    }
+
+    println!("The most calories carried by a single elf is {}", sum);
 
 }
